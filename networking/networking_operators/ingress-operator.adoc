@@ -10,6 +10,9 @@ endif::[]
 :context: configuring-ingress
 
 toc::[]
+
+The Ingress Operator implements the `IngressController` API and is the component responsible for enabling external access to {product-title} cluster services.
+
 include::modules/nw-ne-openshift-ingress.adoc[leveloffset=+1]
 
 //ifndef::openshift-rosa,openshift-dedicated[] NOTE: commenting out this ifndef to track what was in place before OSDOCS-4883.
@@ -95,6 +98,10 @@ include::modules/nw-ingress-set-or-delete-http-headers.adoc[leveloffset=+2]
 include::modules/nw-using-ingress-forwarded.adoc[leveloffset=+2]
 
 include::modules/nw-http2-haproxy.adoc[leveloffset=+2]
+
+include::modules/nw-enable-http2.adoc[leveloffset=+3]
+
+include::modules/nw-disable-http2.adoc[leveloffset=+3]
 
 // Configuring the PROXY protocol for an Ingress Controller
 include::modules/nw-ingress-controller-configuration-proxy-protocol.adoc[leveloffset=+2]

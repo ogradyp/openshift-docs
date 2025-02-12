@@ -82,7 +82,7 @@ include::modules/monitoring-granting-users-permissions-for-core-platform-monitor
 .Additional resources
 * xref:../../observability/monitoring/enabling-monitoring-for-user-defined-projects.adoc#granting-user-permissions-using-the-web-console_enabling-monitoring-for-user-defined-projects[Granting user permissions by using the web console] 
 * xref:../../observability/monitoring/enabling-monitoring-for-user-defined-projects.adoc#granting-user-permissions-using-the-cli_enabling-monitoring-for-user-defined-projects[Granting user permissions by using the CLI]
-* xref:../../observability/monitoring/accessing-third-party-monitoring-apis.adoc#resources-reference-for-the-cluster-monitoring-operator[Resources reference for the {cmo-full}]
+* xref:../../observability/monitoring/accessing-third-party-monitoring-apis.adoc#resources-reference-for-the-cluster-monitoring-operator_accessing-monitoring-apis-by-using-the-cli[Resources reference for the {cmo-full}]
 * xref:../../observability/monitoring/accessing-third-party-monitoring-apis.adoc#cmo-services-resources[CMO services resources]
 
 endif::openshift-dedicated,openshift-rosa[]
@@ -248,9 +248,9 @@ include::modules/monitoring-choosing-a-metrics-collection-profile.adoc[leveloffs
 * See xref:../../nodes/clusters/nodes-cluster-enabling-features.adoc[Enabling features using feature gates] for steps to enable Technology Preview features.
 endif::openshift-dedicated,openshift-rosa[]
 
-// Managing scrape sample limits for user-defined projects
+// Managing scrape and evaluation intervals and enforced limits for user-defined projects
 include::modules/monitoring-limiting-scrape-samples-in-user-defined-projects.adoc[leveloffset=+1]
-include::modules/monitoring-setting-scrape-sample-and-label-limits-for-user-defined-projects.adoc[leveloffset=+2]
+include::modules/monitoring-setting-scrape-and-evaluation-intervals-limits-for-user-defined-projects.adoc[leveloffset=+2]
 ifndef::openshift-dedicated,openshift-rosa[]
 include::modules/monitoring-creating-scrape-sample-alerts.adoc[leveloffset=+2]
 

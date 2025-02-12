@@ -55,8 +55,7 @@ ifndef::openshift-dedicated,openshift-rosa[]
 |Microsoft Azure File | ✅^[4]^  | ✅^[4]^ | ✅| ✅
 |OpenStack Cinder | ✅ | ✅ | ✅|  
 |OpenShift Data Foundation | ✅ | ✅ | ✅|  
-|OpenStack Manila | ✅ |   |  |  
-|Shared Resource |   |   |   | ✅
+|OpenStack Manila | ✅ |   | ✅ |  
 |CIFS/SMB |   | ✅  |   |   
 |VMware vSphere | ✅^[1]^ |   | ✅^[2]^|  
 endif::openshift-dedicated,openshift-rosa[]

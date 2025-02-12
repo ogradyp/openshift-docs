@@ -12,7 +12,7 @@ The assets you create in these procedures will deploy a single-node {product-tit
 
 See xref:../../installing/installing_with_agent_based_installer/installing-with-agent-based-installer.adoc#installing-with-agent-based-installer[Installing an {product-title} cluster with the Agent-based Installer] to learn about more configurations available with the Agent-based Installer.
 
-[id="prerequisites_prepare-pxe-assets-agent_{context}"]
+[id="prerequisites_{context}"]
 == Prerequisites
 
 * You reviewed details about the xref:../../architecture/architecture-installation.adoc#architecture-installation[{product-title} installation and update] processes.
@@ -47,7 +47,7 @@ include::modules/installing-ocp-agent-ibm-z-zvm.adoc[leveloffset=+2]
 [role="_additional-resources"]
 .Additional resources
 
-* xref:../../installing/installing_ibm_z/installing-ibm-z.adoc#installing-ibm-z[Installing a cluster with z/VM on {ibm-z-title} and {ibm-linuxone-title}]
+* xref:../../installing/installing_ibm_z/upi/installing-ibm-z.adoc#installing-ibm-z[Installing a cluster with z/VM on {ibm-z-title} and {ibm-linuxone-title}]
 
 // Adding {ibm-z-name} agents with {op-system-base} KVM
 include::modules/installing-ocp-agent-ibm-z-kvm.adoc[leveloffset=+2]
@@ -58,6 +58,6 @@ include::modules/adding-ibm-z-lpar-agent.adoc[leveloffset=+2]
 [role="_additional-resources"]
 .Additional resources
 
-* xref:../../installing/installing_ibm_z/installing-ibm-z.adoc#installing-ibm-z[Installing a cluster with z/VM on {ibm-z-title} and {ibm-linuxone-title}]
+* xref:../../installing/installing_ibm_z/upi/installing-ibm-z.adoc#installing-ibm-z[Installing a cluster with z/VM on {ibm-z-title} and {ibm-linuxone-title}]
 
 

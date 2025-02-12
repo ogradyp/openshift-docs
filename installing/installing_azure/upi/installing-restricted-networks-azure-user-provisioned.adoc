@@ -1,6 +1,6 @@
 :_mod-docs-content-type: ASSEMBLY
 [id="installing-restricted-networks-azure-user-provisioned"]
-= Installing a cluster on Azure in a restricted network with user-provisioned infrastructure
+= Installing a cluster on Azure in a disconnected environment with user-provisioned infrastructure
 include::_attributes/common-attributes.adoc[]
 :context: installing-restricted-networks-azure-user-provisioned
 
@@ -54,8 +54,6 @@ include::modules/installation-azure-limits.adoc[leveloffset=+2]
 include::modules/installation-azure-network-config.adoc[leveloffset=+2]
 
 You can view Azure's DNS solution by visiting this xref:installation-azure-create-dns-zones_{context}[example for creating DNS zones].
-
-include::modules/installation-azure-increasing-limits.adoc[leveloffset=+2]
 
 include::modules/csr-management.adoc[leveloffset=+2]
 

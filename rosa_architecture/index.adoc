@@ -120,7 +120,7 @@ xref:../installing/installing_vsphere/upi/installing-restricted-networks-vsphere
 xref:../installing/installing_bare_metal/installing-restricted-networks-bare-metal.adoc#installing-restricted-networks-bare-metal[bare metal] and the cluster
 does not have full access to the internet, you must mirror the {product-title} installation images. To do this action, use one of the following methods, so that you can install a cluster in a restricted network.
 *** xref:../disconnected/mirroring/installing-mirroring-installation-images.adoc#installing-mirroring-installation-images[Mirroring images for a disconnected installation]
-*** xref:../disconnected/mirroring/installing-mirroring-disconnected.adoc#installing-mirroring-disconnected[Mirroring images for a disconnected installation by using the oc-mirror plug-in]
+*** xref:../disconnected/mirroring/about-installing-oc-mirror-v2.adoc#about-installing-oc-mirror-v2[Mirroring images for a disconnected installation by using the oc-mirror plugin v2]
 endif::openshift-origin[]
 
 ifdef::openshift-origin[]
@@ -185,7 +185,7 @@ xref:../applications/working_with_helm_charts/understanding-helm.adoc#understand
 
 - **xref:../applications/deployments/what-deployments-are.adoc#what-deployments-are[Create deployments]**:  Use `Deployment` objects to exert fine-grained management over applications. Deployments create replica sets according to the rollout strategy, which orchestrates pod lifecycles.
 
-- **xref:../openshift_images/using-templates.adoc#using-templates[Create templates]**: Use existing templates or create your own templates that describe how an application is built or deployed. A template can combine images with descriptions, parameters, replicas, exposed ports and other content that defines how an application can be run or built.
+- **xref:../applications/creating_applications/using-templates.adoc#using-templates[Create templates]**: Use existing templates or create your own templates that describe how an application is built or deployed. A template can combine images with descriptions, parameters, replicas, exposed ports and other content that defines how an application can be run or built.
 
 - **xref:../operators/understanding/olm-what-operators-are.adoc#olm-what-operators-are[Understand Operators]**: Operators are the preferred method for creating on-cluster applications for {product-title} {product-version}. Learn about the Operator Framework and how to deploy applications by using installed Operators into your projects.
 

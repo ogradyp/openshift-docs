@@ -117,6 +117,11 @@ The fields for this object specify the kube-proxy configuration.
 If you are using the OVN-Kubernetes cluster network plugin, the kube-proxy configuration has no effect.
 |====
 
+[IMPORTANT]
+====
+For a cluster that needs to deploy objects across multiple networks, ensure that you specify the same value for the `clusterNetwork.hostPrefix` parameter for each network type that is defined in the `install-config.yaml` file. Setting a different value for each `clusterNetwork.hostPrefix` parameter can impact the OVN-Kubernetes network plugin, where the plugin cannot effectively route object traffic among different nodes.
+====
+
 [discrete]
 [id="nw-operator-cr-defaultnetwork_{context}"]
 === defaultNetwork object configuration
@@ -133,7 +138,7 @@ The values for the `defaultNetwork` object are defined in the following table:
 |`OVNKubernetes`. The {openshift-networking} network plugin is selected during installation. This value cannot be changed after cluster installation.
 [NOTE]
 ====
-{product-title} uses the OVN-Kubernetes network plugin by default. OpenShift SDN is no longer available as an installation choice for new clusters.
+{product-title} uses the OVN-Kubernetes network plugin by default.
 ====
 
 |`ovnKubernetesConfig`
@@ -306,6 +311,10 @@ If you set this field to `true`, you do not receive the performance benefits of 
 |`ipForwarding`
 |`object`
 |You can control IP forwarding for all traffic on OVN-Kubernetes managed interfaces by using the `ipForwarding` specification in the `Network` resource. Specify `Restricted` to only allow IP forwarding for Kubernetes related traffic. Specify `Global` to allow forwarding of all IP traffic. For new installations, the default is `Restricted`. For updates to {product-title} 4.14 or later, the default is `Global`.
+[NOTE]
+====
+The default value of `Restricted` sets the IP forwarding to drop.
+====
 
 |`ipv4`
 |`object`
@@ -384,8 +393,8 @@ defaultNetwork:
   ovnKubernetesConfig:
     mtu: 1400
     genevePort: 6081
-      ipsecConfig:
-        mode: Full
+    ipsecConfig:
+      mode: Full
 ----
 
 ifdef::operator[]

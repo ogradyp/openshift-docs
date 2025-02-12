@@ -1,6 +1,6 @@
 :_mod-docs-content-type: ASSEMBLY
 [id="k8s-nmstate-about-the-k8s-nmstate-operator"]
-= About the Kubernetes NMState Operator
+= Kubernetes NMState Operator
 include::_attributes/common-attributes.adoc[]
 :FeatureName: Kubernetes NMState Operator
 :context: k8s-nmstate-operator
@@ -41,16 +41,22 @@ You can install the Kubernetes NMState Operator by using the web console or the 
 // Installing the Kubernetes NMState Operator by using the web console
 include::modules/k8s-nmstate-installing-the-kubernetes-nmstate-operator.adoc[leveloffset=+2]
 
-// Installing the Kubernetes NMState Operator using the CLI
+// Installing the Kubernetes NMState Operator by using the CLI
 include::modules/k8s-nmstate-deploying-nmstate-CLI.adoc[leveloffset=+2]
 
 // Viewing statistics collected by the Kubernetes NMState Operator
 include::modules/viewing-stats-collected-kubernetes-nmtate-op.adoc[leveloffset=+2]
 
+// Uninstalling the Kubernetes NMState Operator
+include::modules/k8s-nmstate-uninstall-operator.adoc[leveloffset=+1]
+
 [role="_additional-resources"]
 [id="additional-resources_k8s-nmstate-view-stats_{context}"]
 == Additional resources
 
-* xref:../../networking/networking_operators/k8s-nmstate-about-the-k8s-nmstate-operator.adoc#installing-the-kubernetes-nmstate-operator-cli[Installing the Kubernetes NMState Operator]
-* xref:../../networking/k8s_nmstate/k8s-nmstate-updating-node-network-config.adoc#virt-creating-interface-on-nodes_k8s_nmstate-updating-node-network-config[Creating an interface on nodes]
+* xref:../../networking/k8s_nmstate/k8s-nmstate-updating-node-network-config.adoc#virt-creating-interface-on-nodes_k8s-nmstate-updating-node-network-config[Creating an interface on nodes]
 
+[id="k8s-nmstate-about-next-steps"]
+== Next steps
+
+* xref:../../networking/k8s_nmstate/k8s-nmstate-updating-node-network-config.adoc#k8s-nmstate-updating-node-network-config[Observing and updating the node network state and configuration]

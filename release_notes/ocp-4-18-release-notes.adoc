@@ -14,12 +14,12 @@ Built on {op-system-base-full} and Kubernetes, {product-title} provides a more s
 == About this release
 
 // TODO: Update with the relevant information closer to release.
-{product-title} (link:https://access.redhat.com/errata/RHSA-2024:xxxx[RHSA-2024:xxxx]) is now available. This release uses link:https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.30.md[Kubernetes 1.30] with CRI-O runtime. New features, changes, and known issues that pertain to {product-title} {product-version} are included in this topic.
+{product-title} (link:https://access.redhat.com/errata/RHSA-2024:xxxx[RHSA-2024:xxxx]) is now available. This release uses link:https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.31.md[Kubernetes 1.31] with CRI-O runtime. New features, changes, and known issues that pertain to {product-title} {product-version} are included in this topic.
 
 {product-title} {product-version} clusters are available at https://console.redhat.com/openshift. With the {cluster-manager-first} application for {product-title}, you can deploy {product-title} clusters to either on-premises or cloud environments.
 
 // Double check OP system versions
-{product-title} {product-version} is supported on {op-system-base-full} 8.8-8.10, and on {op-system-first} 9.4.
+{product-title} {product-version} is supported on {op-system-base-full} 8.8 and a later version of {op-system-base} 8 that is released before End of Life of {product-title} {product-version}. {product-title} {product-version} is also supported on {op-system-first}. To understand {op-system-base} versions used by {op-system}, see link:https://access.redhat.com/articles/6907891[{op-system-base} Versions Utilized by {op-system-first} and {product-title}] (Knowledgebase article).
 
 You must use {op-system} machines for the control plane, and you can use either {op-system} or {op-system-base} for compute machines. {op-system-base} machines are deprecated in {product-title} 4.16 and will be removed in a future release.
 //Removed the note per https://issues.redhat.com/browse/GRPA-3517
@@ -52,6 +52,25 @@ This release adds improvements related to the following components and concepts:
 
 [id="ocp-release-notes-auth_{context}"]
 === Authentication and authorization
+
+[id="ocp-release-notes-auth-ccoctl-rotation_{context}"]
+==== Rotating OIDC bound service account signer keys
+
+With this release, you can use the Cloud Credential Operator (CCO) utility (`ccoctl`) to rotate the OpenID Connect (OIDC) bound service account signer key for clusters installed on the following cloud providers:
+
+* xref:../post_installation_configuration/changing-cloud-credentials-configuration.adoc#rotating-bound-service-keys_key-rotation-aws[{aws-first} with {sts-first}]
+* xref:../post_installation_configuration/changing-cloud-credentials-configuration.adoc#rotating-bound-service-keys_key-rotation-gcp[{gcp-first} with {gcp-wid-short}]
+* xref:../post_installation_configuration/changing-cloud-credentials-configuration.adoc#rotating-bound-service-keys_key-rotation-azure[{azure-first} with {entra-short}]
+
+[id="ocp-release-notes-backup-restore_{context}"]
+=== Backup and restore
+
+[id="ocp-4-18-hibernating_{context}"]
+==== Hibernating a cluster for up to 90 days
+
+With this release, you can now hibernate your {product-title} cluster for up to 90 days and expect the cluster to recover successfully. Before this release, you could only hibernate for up to 30 days.
+
+For more information, see xref:../backup_and_restore/hibernating-cluster.adoc#hibernating-cluster[Hibernating an {product-title} cluster].
 
 [id="ocp-release-notes-builds_{context}"]
 === Builds
@@ -408,9 +427,40 @@ Starting in {product-title} 4.14, Extended Update Support (EUS) is extended to t
 
 [id="ocp-release-notes-insights-operator-enhancements_{context}"]
 === Insights Operator
+[id="ocp-release-notes-insights-operator-runtime-extractor_{context}"]
+==== Insights Runtime Extractor (Technology Preview)
+
+In this release, the Insights Operator introduces the workload data collection _Insights Runtime Extractor_ feature to help Red{nbsp}Hat better understand the workload of your containers.
+Available as a Technology Preview, the Insights Runtime Extractor feature gathers runtime workload data and sends it to Red{nbsp}Hat.
+Red{nbsp}Hat uses the collected runtime workload data to gain insights that can help you make investment decisions that will drive and optimize how you use your {product-title} containers.
+For more information, see xref:../nodes/clusters/nodes-cluster-enabling-features.adoc#nodes-cluster-enabling[_Enabling features using feature gates_].
 
 [id="ocp-release-notes-installation-and-update_{context}"]
 === Installation and update
+
+[id="ocp-4-18-installation-and-update-ovn-kubernetes-join-subnet_{context}"]
+==== Configuring the `ovn-kubernetes` join subnet during cluster installation
+With this release, you can configure the IPv4 join subnet that is used internally by `ovn-kubernetes` when installing a cluster. You can set the `internalJoinSubnet` parameter in the `install-config.yaml` file and deploy the cluster into an existing Virtual Private Cloud (VPC).
+
+For more information, see xref:../installing/installing_aws/installation-config-parameters-aws.adoc#installation-configuration-parameters-network_installation-config-parameters-aws[Network configuration parameters].
+
+[id="ocp-4-18-installation-and-update-nc2-aws-support_{context}"]
+==== Support for Nutanix Cloud Clusters (NC2) on {aws-first} and NC2 on {azure-first}
+With this release, you can install {product-title} on Nutanix Cloud Clusters (NC2) on {aws-short} or NC2 on {azure-short}.
+
+For more information, see xref:../installing/installing_nutanix/preparing-to-install-on-nutanix.adoc#installation-nutanix-installer-infrastructure-reqs_preparing-to-install-on-nutanix[Infrastructure requirements].
+
+[id="ocp-4-18-installation-and-update-gcp-c4-c4a_{context}"]
+==== Installing a cluster on {gcp-full} using the C4 and C4A machine series
+
+With this release, you can deploy a cluster on {gcp-short} using the C4 and C4A machine series for compute or control plane machines. The supported disk type of these machines is `hyperdisk-balanced`. If you use an instance type that requires Hyperdisk storage, all of the nodes in your cluster must support Hyperdisk storage, and you must change the default storage class to use Hyperdisk storage.
+
+For more information about configuring machine types, see xref:../installing/installing_gcp/installation-config-parameters-gcp.adoc#installation-configuration-parameters-gcp[Installation configuration parameters for GCP], link:https://cloud.google.com/compute/docs/general-purpose-machines#c4_series[C4 machine series] (Compute Engine docs), and link:https://cloud.google.com/compute/docs/general-purpose-machines#c4a_series[C4A machine series] (Compute Engine docs).
+[id="ocp-4-18-installation-and-update-gcp-byo-vpc-phz_{context}"]
+==== Provide your own private hosted zone when installing a cluster on {gcp-full}
+With this release, you can provide your own private hosted zone when installing a cluster on {gcp-short} into a shared VPC. If you do, the requirements for the bring your own (BYO) zone are that the zone must use a DNS name such as `<cluster name>.<base domain>.` and that you bind the zone to the VPC network of the cluster.
+
+For more information, see xref:../installing/installing_gcp/installing-gcp-shared-vpc.adoc#installation-gcp-shared-vpc-prerequisites_installing-gcp-shared-vpc[Prerequisites for installing a cluster on GCP into a shared VPC] and xref:../installing/installing_gcp/installing-gcp-user-infra-vpc.adoc#prerequisites[Prerequisites for installing a cluster into a shared VPC on GCP using Deployment Manager templates].
 
 [id="ocp-release-notes-olm_{context}"]
 === Operator lifecycle
@@ -427,6 +477,10 @@ Starting in {product-title} 4.14, Extended Update Support (EUS) is extended to t
 [id="ocp-release-notes-machine-config-operator_{context}"]
 === Machine Config Operator
 
+[id="ocp-release-notes-machine-config-operator-aws-boot-ga_{context}"]
+==== Updated boot images for AWS clusters promoted to GA
+Updated boot images has been promoted to GA for Amazon Web Services (AWS) clusters. For more information, see xref:../machine_configuration/mco-update-boot-images.adoc#mco-update-boot-images[Updated boot images].
+
 [id="ocp-release-notes-machine-management_{context}"]
 === Machine management
 
@@ -435,6 +489,63 @@ Starting in {product-title} 4.14, Extended Update Support (EUS) is extended to t
 
 [id="ocp-release-notes-networking_{context}"]
 === Networking
+
+[id="ocp-release-notes-networking-whitelist-blacklist-annotation-updated-allowlist-denylist_{context}"]
+==== Updated terminology for whitelist and blacklist annotations
+The terminology for the `ip_whitelist` and `ip_blacklist` annotations have been updated to `ip_allowlist` and `ip_denylist`, respectively. Currently, {product-title} still supports the `ip_whitelist` and `ip_blacklist` annotations. However, these annotations are planned for removal in a future release.
+
+[id="ocp-release-notes-networking-ovn-kubernetes-observability_{context}"]
+==== Checking OVN-Kubernetes network traffic with OVS sampling using the CLI
+
+OVN-Kubernetes network traffic can be viewed with OVS sampling via the CLI for the following network APIs:
+
+* `NetworkPolicy`
+* `AdminNetworkPolicy`
+* `BaselineNetworkPolicy`
+* `UserDefinesdNetwork` isolation
+* `EgressFirewall`
+* Multicast ACLs.
+
+Checking OVN-Kubernetes network traffic with OVS sampling using the CLI is intended to help with packet tracing. It can also be used while the Network Observability Operator is installed.
+
+For more information, see xref:../networking/ovn_kubernetes_network_provider/ovn-kubernetes-troubleshooting-sources.adoc#nw-ovn-kubernetes-observability_ovn-kubernetes-sources-of-troubleshooting-information[Checking OVN-Kubernetes network traffic with OVS sampling using the CLI].
+
+[id="ocp-release-notes-networking-dynamic-config-manager_{context}"]
+==== The dynamic configuration manager is enabled by default (Technology Preview)
+
+You can reduce your memory footprint by using the dynamic configuration manager on Ingress Controllers. The dynamic configuration manager propagates endpoint changes through a dynamic API. This process enables the underlying routers to adapt to changes (scale ups and scale downs) without reloads.
+
+To use the dynamic configuration manager, enable the `TechPreviewNoUpgrade` feature set by running the following command:
+
+[source,terminal]
+----
+$ oc patch featuregates cluster -p '{"spec": {"featureSet": "TechPreviewNoUpgrade"}}' --type=merge
+----
+
+[id="ocp-release-notes-networking-network-matrix-environments_{context}"]
+==== Additional environments for the network flow matrix
+
+With this release, you can view network information for ingress flows to {product-title} services in the following environments:
+
+* {product-title} on bare metal
+* {sno-caps} on bare metal
+* {product-title} on {aws-first}
+* {sno-caps} on {aws-short}
+
+For more information, see  xref:../installing/install_config/configuring-firewall.adoc#network-flow-matrix_configuring-firewall[{product-title} network flow matrix].
+
+[id="ocp-release-notes-networking-metallb-dynamic-asn_{context}"]
+==== MetalLB updates for Border Gateway Protocol
+
+With this release, MetalLB includes a new field for the Border Gateway Protocol (BGP) peer custom resource. 
+You can use the `dynamicASN` field to detect the Autonomous System Number (ASN) to use for the remote end of a BGP session.  
+This is an alternative to explicitly setting an ASN in the `spec.peerASN` field.
+
+[id="ocp-release-notes-networking-sr-iov-rdma-cni_{context}"]
+==== Configuring an RDMA subsytem for SR-IOV 
+
+With this release, you can configure a Remote Direct Memory Access (RDMA) Container Network Interface (CNI) on Single Root I/O Virtualization (SR-IOV) to enable high-performance, low-latency communication between containers. 
+When you combine RDMA with SR-IOV, you provide a mechanism to expose hardware counters of Mellanox Ethernet devices to be used inside Data Plane Development Kit (DPDK) applications.
 
 [id="ocp-release-notes-nodes_{context}"]
 === Nodes
@@ -445,11 +556,46 @@ Starting in {product-title} 4.14, Extended Update Support (EUS) is extended to t
 [id="ocp-release-notes-registry_{context}"]
 === Registry
 
+[discrete]
+[id="ocp-4-release-notes-read-only-registry-enhancements_{context}"]
+==== Read-only registry enhancements
+
+In previous versions of {product-title}, storage mounted as read-only returned no specific metrics or information about storage errors. This could result in silent failures of a registry when the storage backend was read-only. With this release, the following alerts have been added to return storage information when the backend is set to read-only:
+
+[cols="2", options="header"]
+|===
+| Alert Name | Message
+
+| `ImageRegistryStorageReadOnly`
+| The image registry storage is read-only and no images will be committed to storage.
+
+| `ImageRegistryStorageFull`
+| The image registry storage disk is full and no images will be committed to storage.
+
+|===
+
 [id="ocp-release-notes-rhcos_{context}"]
 === {op-system-first}
 
 [id="ocp-release-notes-scalability-and-performance_{context}"]
 === Scalability and performance
+
+[id="ocp-release-notes-scalability-and-performance-cluster-compare_{context}"]
+==== Cluster validation with the cluster-compare plugin
+
+The `cluster-compare` plugin is an OpenShift CLI (`oc`) plugin that compares a cluster configuration with a target configuration. The plugin reports configuration differences while suppressing expected variations by using configurable validation rules and templates.
+
+For example, the plugin can highlight unexpected differences, such as mismatched field values, missing resources, or version discrepancies, while ignoring expected differences, such as optional components or hardware-specific fields. This focused comparison makes it easier to assess cluster compliance with the target configuration.
+
+You can use the `cluster-compare` plugin in development, production, and support scenarios.
+
+For more information about the `cluster-compare` plugin, see xref:../scalability_and_performance/cluster-compare/understanding-the-cluster-compare-plugin.adoc#cluster-compare-overview_understanding-cluster-compare[Overview of the cluster-compare plugin].
+[id="ocp-release-notes-node-tuning-operator-deferred-updates_{context}"]
+==== Node Tuning Operator: Deferred Tuning Updates
+
+In this release, the Node Tuning Operator introduces support for deferring tuning updates. Administrators can schedule updates to be applied during a maintenance window with this feature.
+
+For more information, see xref:../scalability_and_performance/using-node-tuning-operator.adoc#defer-application-of-tuning-changes_node-tuning-operator[Deferring application of tuning changes].
 
 [id="ocp-release-notes-etcd-certificates_{context}"]
 === Security
@@ -457,11 +603,24 @@ Starting in {product-title} 4.14, Extended Update Support (EUS) is extended to t
 [id="ocp-release-notes-storage_{context}"]
 === Storage
 
+[id="ocp-4-18-storage-editing-overprovisioning-ratio_{context}"]
+==== Over-provisioning ratio update after LVMCluster custom resource creation
+
+Previously, the `thinPoolConfig.overprovisionRatio` field in the `LVMCluster` custom resource (CR) could be configured only during the creation of the `LVMCluster` CR. With this release, you can now update the `thinPoolConfig.overprovisionRatio` field even after creating the `LVMCluster` CR.
+
 [id="ocp-release-notes-web-console_{context}"]
 === Web console
 
 [id="ocp-4-18-notable-technical-changes_{context}"]
 == Notable technical changes
+
+[discrete]
+[id="ocp-4-18-notable-technical-changes-uninstall-sr-iov-operator_{context}"]
+=== Uninstalling the SR-IOV Network Operator changed
+
+From {product-title} {product-version}, to successfully uninstall the SR-IOV Network Operator, you need to delete the `sriovoperatorconfigs` custom resource and custom resource definition too.
+
+For more information, see xref:../networking/networking_operators/sr-iov-operator/uninstalling-sriov-operator.adoc#nw-sriov-operator-uninstall_uninstalling-sr-iov-operator[Uninstalling the SR-IOV Network Operator].
 
 [id="ocp-4-18-deprecated-removed-features_{context}"]
 == Deprecated and removed features
@@ -804,6 +963,16 @@ In the following tables, features are marked with the following statuses:
 [id="ocp-4-18-future-deprecation_{context}"]
 === Notice of future deprecation
 
+[id="ocp-4-18-future-removals"]
+=== Future Kubernetes API removals
+
+// Kubernetes 1.32 isn't released yet, but it will be by the time OCP 4.18 comes out
+The next minor release of {product-title} is expected to use Kubernetes 1.32. Kubernetes 1.32 removed a deprecated API.
+
+See the link:https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-32[Deprecated API Migration Guide] in the upstream Kubernetes documentation for the list of planned Kubernetes API removals.
+
+See link:https://access.redhat.com/articles/6955985[Navigating Kubernetes API deprecations and removals] for information about how to check your cluster for Kubernetes APIs that are planned for removal.
+
 [id="ocp-4-18-bug-fixes_{context}"]
 == Bug fixes
 //Bug fix work for TELCODOCS-750
@@ -1133,24 +1302,24 @@ In the following tables, features are marked with the following statuses:
 |Technology Preview
 
 |On-cluster RHCOS image layering
-|Not Available
+|Technology Preview
 |Technology Preview
 |Technology Preview
 
 |Node disruption policies
-|Not Available
 |Technology Preview
+|General Availability
 |General Availability
 
 |Updating boot images for GCP clusters
-|Not Available
 |Technology Preview
+|General Availability
 |General Availability
 
 |Updating boot images for AWS clusters
 |Not Available
-|Not Available
 |Technology Preview
+|General Availability
 
 |====
 
@@ -1346,10 +1515,10 @@ In the following tables, features are marked with the following statuses:
 |Not Available
 |General Availability
 
-|Configure the `br-ex` bridge needed by OVN-Kuberenetes using NMState
-|Not Available
+|Customized `br-ex` bridge needed by OVN-Kuberenetes to use NMState
 |Technology Preview
 |Technology Preview
+|General Availability
 
 | Live migration to OVN-Kubernetes from OpenShift SDN
 | Not Available
@@ -1629,12 +1798,18 @@ In the following tables, features are marked with the following statuses:
 [id="ocp-4-18-known-issues_{context}"]
 == Known issues
 
+* A regression in the behaviour of `libreswan` caused some nodes with IPsec enabled to lose communication with pods on other nodes in the same cluster. To resolve this issue, consider disabling IPsec for your cluster. (link:https://issues.redhat.com/browse/OCPBUGS-43713[*OCPBUGS-43713*])
+
 [id="ocp-telco-ran-4-18-known-issues_{context}"]
 
 * When you run Cloud-native Network Functions (CNF) latency tests on an {product-title} cluster, the test can sometimes return results greater than the latency threshold for the test; for example, 20 microseconds for `cyclictest` testing. This results in a test failure.
 (link:https://issues.redhat.com/browse/OCPBUGS-42328[*OCPBUGS-42328*])
 
 [id="ocp-telco-core-4-18-known-issues_{context}"]
+
+* Due to an issue with Kubernetes, the CPU Manager is unable to return CPU resources from the last pod admitted to a node to the pool of available CPU resources. These resources are allocatable if a subsequent pod is admitted to the node. However, this pod then becomes the last pod, and again, the CPU manager cannot return this pod's resources to the available pool.
++
+This issue affects CPU load balancing features, which depend on the CPU Manager releasing CPUs to the available pool. Consequently, non-guaranteed pods might run with a reduced number of CPUs. As a workaround, schedule a pod with a `best-effort` CPU Manager policy on the affected node. This pod will be the last admitted pod and this ensures the resources will be correctly released to the available pool. (link:https://issues.redhat.com/browse/OCPBUGS-17792[*OCPBUGS-17792*])
 
 [id="ocp-storage-core-4-18-known-issues_{context}"]
 

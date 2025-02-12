@@ -31,6 +31,8 @@ Topics:
   File: index
 - Name: Learn more about OpenShift Container Platform
   File: learn_more_about_openshift
+- Name: Providing documentation feedback
+  File: providing-feedback-on-red-hat-documentation
   Distros: openshift-enterprise
 - Name: About OpenShift Kubernetes Engine
   File: oke_about
@@ -90,9 +92,6 @@ Topics:
 - Name: Control plane architecture
   File: control-plane
   Distros: openshift-enterprise,openshift-origin,openshift-online
-- Name: NVIDIA GPU architecture overview
-  File: nvidia-gpu-architecture-overview
-  Distros: openshift-enterprise
 - Name: Understanding OpenShift development
   File: understanding-development
   Distros: openshift-enterprise
@@ -201,7 +200,7 @@ Topics:
       File: installing-aws-customizations
     - Name: Installing a cluster with network customizations
       File: installing-aws-network-customizations
-    - Name: Installing a cluster in a restricted network
+    - Name: Installing a cluster in a disconnected environment
       File: installing-restricted-networks-aws-installer-provisioned
     - Name: Installing a cluster into an existing VPC
       File: installing-aws-vpc
@@ -231,7 +230,7 @@ Topics:
       File: upi-aws-installation-reqs
     - Name: Installing a cluster using CloudFormation templates
       File: installing-aws-user-infra
-    - Name: Installing a cluster in a restricted network with user-provisioned infrastructure
+    - Name: Installing a cluster in a disconnected environment with user-provisioned infrastructure
       File: installing-restricted-networks-aws
     - Name: Installing an AWS cluster with the support for configuring multi-architecture compute machines
       File: installing-aws-multiarch-support-upi
@@ -264,7 +263,7 @@ Topics:
       File: installing-azure-customizations
     - Name: Installing a cluster with network customizations
       File: installing-azure-network-customizations
-    - Name: Installing a cluster in a restricted network
+    - Name: Installing a cluster in a disconnected environment
       File: installing-restricted-networks-azure-installer-provisioned
     - Name: Installing a cluster into an existing VNet
       File: installing-azure-vnet
@@ -278,7 +277,7 @@ Topics:
     Topics:
     - Name: Preparing to install a cluster
       File: installing-azure-preparing-upi
-    - Name: Installing a cluster in a restricted network with user-provisioned infrastructure
+    - Name: Installing a cluster in a disconnected environment with user-provisioned infrastructure
       File: installing-restricted-networks-azure-user-provisioned
     - Name: Installing a cluster using ARM templates
       File: installing-azure-user-infra
@@ -332,7 +331,7 @@ Topics:
     File: installing-gcp-customizations
   - Name: Installing a cluster on GCP with network customizations
     File: installing-gcp-network-customizations
-  - Name: Installing a cluster on GCP in a restricted network
+  - Name: Installing a cluster on GCP in a disconnected environment
     File: installing-restricted-networks-gcp-installer-provisioned
   - Name: Installing a cluster on GCP into an existing VPC
     File: installing-gcp-vpc
@@ -344,7 +343,7 @@ Topics:
     File: installing-gcp-user-infra
   - Name: Installing a cluster into a shared VPC on GCP using Deployment Manager templates
     File: installing-gcp-user-infra-vpc
-  - Name: Installing a cluster on GCP in a restricted network with user-provisioned infrastructure
+  - Name: Installing a cluster on GCP in a disconnected environment with user-provisioned infrastructure
     File: installing-restricted-networks-gcp
   - Name: Installing a three-node cluster on GCP
     File: installing-gcp-three-node
@@ -374,7 +373,7 @@ Topics:
     File: installing-ibm-cloud-vpc
   - Name: Installing a private cluster on IBM Cloud
     File: installing-ibm-cloud-private
-  - Name: Installing a cluster on IBM Cloud in a restricted network
+  - Name: Installing a cluster on IBM Cloud in a disconnected environment
     File: installing-ibm-cloud-restricted
   - Name: Installation configuration parameters for IBM Cloud
     File: installation-config-parameters-ibm-cloud-vpc
@@ -390,7 +389,7 @@ Topics:
     File: nutanix-failure-domains
   - Name: Installing a cluster on Nutanix
     File: installing-nutanix-installer-provisioned
-  - Name: Installing a cluster on Nutanix in a restricted network
+  - Name: Installing a cluster on Nutanix in a disconnected environment
     File: installing-restricted-networks-nutanix-installer-provisioned
   - Name: Installing a three-node cluster on Nutanix
     File: installing-nutanix-three-node
@@ -442,7 +441,7 @@ Topics:
       File: installing-bare-metal
     - Name: Installing a user-provisioned bare metal cluster with network customizations
       File: installing-bare-metal-network-customizations
-    - Name: Installing a user-provisioned bare metal cluster on a restricted network
+    - Name: Installing a user-provisioned bare metal cluster on a disconnected environment
       File: installing-restricted-networks-bare-metal
     - Name: Scaling a user-provisioned installation with the bare metal operator
       File: scaling-a-user-provisioned-cluster-with-the-bare-metal-operator
@@ -478,23 +477,31 @@ Topics:
   Dir: installing_ibm_z
   Distros: openshift-enterprise
   Topics:
-  - Name: Preparing to install on IBM Z and IBM LinuxONE
+  - Name: Installation methods
     File: preparing-to-install-on-ibm-z
-  - Name: Installing a cluster with z/VM on IBM Z and IBM LinuxONE
-    File: installing-ibm-z
-  - Name: Restricted network IBM Z installation with z/VM
-    File: installing-restricted-networks-ibm-z
-  - Name: Installing a cluster with RHEL KVM on IBM Z and IBM LinuxONE
-    File: installing-ibm-z-kvm
-  - Name: Restricted network IBM Z installation with RHEL KVM
-    File: installing-restricted-networks-ibm-z-kvm
-  - Name: Installing a cluster in an LPAR on IBM Z and IBM LinuxONE
-    File: installing-ibm-z-lpar
-  - Name: Restricted network IBM Z installation in an LPAR
-    File: installing-restricted-networks-ibm-z-lpar
-  - Name: Installation configuration parameters for IBM Z and IBM LinuxONE
+  - Name: User-provisioned infrastructure
+    Dir: upi
+    Distros: openshift-enterprise
+    Topics:
+    - Name: Installation requirements
+      File: installing-ibm-z-reqs
+    - Name: Preparing to install a cluster
+      File: upi-ibm-z-preparing-to-install
+    - Name: Installing a cluster with z/VM
+      File: installing-ibm-z
+    - Name: Installing a cluster with z/VM in a disconnected environment
+      File: installing-restricted-networks-ibm-z
+    - Name: Installing a cluster with RHEL KVM
+      File: installing-ibm-z-kvm
+    - Name: Installing a cluster with RHEL KVM in a disconnected environment
+      File: installing-restricted-networks-ibm-z-kvm
+    - Name: Installing a cluster in an LPAR
+      File: installing-ibm-z-lpar
+    - Name: Installing a cluster in an LPAR in a disconnected environment
+      File: installing-restricted-networks-ibm-z-lpar
+  - Name: Installation configuration parameters
     File: installation-config-parameters-ibm-z
-  - Name: Configuring additional devices in an IBM Z or IBM LinuxONE environment
+  - Name: Configuring additional devices
     File: ibmz-post-install
 - Name: Installing on IBM Power
   Dir: installing_ibm_power
@@ -504,7 +511,7 @@ Topics:
     File: preparing-to-install-on-ibm-power
   - Name: Installing a cluster on IBM Power
     File: installing-ibm-power
-  - Name: Restricted network IBM Power installation
+  - Name: Installing a cluster on IBM Power in a disconnected environment
     File: installing-restricted-networks-ibm-power
   - Name: Installation configuration parameters for IBM Power
     File: installation-config-parameters-ibm-power
@@ -524,7 +531,7 @@ Topics:
     File: installing-ibm-powervs-vpc
   - Name: Installing a private cluster on IBM Power Virtual Server
     File: installing-ibm-power-vs-private-cluster
-  - Name: Installing a cluster on IBM Power Virtual Server in a restricted network
+  - Name: Installing a cluster on IBM Power Virtual Server in a disconnected environment
     File: installing-restricted-networks-ibm-power-vs
   - Name: Uninstalling a cluster on IBM Power Virtual Server
     File: uninstalling-cluster-ibm-power-vs
@@ -544,7 +551,7 @@ Topics:
     File: installing-openstack-installer-custom
   - Name: Installing a cluster on OpenStack on your own infrastructure
     File: installing-openstack-user
-  - Name: Installing a cluster on OpenStack in a restricted network
+  - Name: Installing a cluster on OpenStack in a disconnected environment
     File: installing-openstack-installer-restricted
   - Name: Installing a three-node cluster on OpenStack
     File: installing-openstack-three-node
@@ -590,7 +597,7 @@ Topics:
       File: installing-vsphere-installer-provisioned-customizations
     - Name: Installing a cluster with network customizations
       File: installing-vsphere-installer-provisioned-network-customizations
-    - Name: Installing a cluster in a restricted network
+    - Name: Installing a cluster in a disconnected environment
       File: installing-restricted-networks-installer-provisioned-vsphere
   - Name: User-provisioned infrastructure
     Dir: upi
@@ -604,7 +611,7 @@ Topics:
       File: installing-vsphere
     - Name: Installing a cluster with network customizations
       File: installing-vsphere-network-customizations
-    - Name: Installing a cluster in a restricted network
+    - Name: Installing a cluster in a disconnected environment
       File: installing-restricted-networks-vsphere
   - Name: Assisted Installer
     Distros: openshift-enterprise
@@ -764,8 +771,6 @@ Topics:
     File: updating-hardware-on-nodes-running-on-vsphere
   - Name: Migrating to a cluster with multi-architecture compute machines
     File: migrating-to-multi-payload
-  - Name: Updating hosted control planes
-    File: updating-hosted-control-planes
   - Name: Updating the boot loader on Red Hat Enterprise Linux CoreOS nodes using bootupd
     File: updating-bootloader-rhcos
     Distros: openshift-enterprise
@@ -809,7 +814,7 @@ Topics:
     File: using-insights-to-identify-issues-with-your-cluster
   - Name: Using the Insights Operator
     File: using-insights-operator
-  - Name: Using remote health reporting in a restricted network
+  - Name: Using remote health reporting in a disconnected environment
     File: remote-health-reporting-from-restricted-network
   - Name: Importing simple content access entitlements with Insights Operator
     File: insights-operator-simple-access
@@ -1329,8 +1334,6 @@ Name: Networking
 Dir: networking
 Distros: openshift-enterprise,openshift-origin
 Topics:
-- Name: About networking
-  File: about-networking
 - Name: Understanding networking
   File: understanding-networking
 - Name: Zero trust networking
@@ -1343,7 +1346,7 @@ Topics:
   Dir: networking_operators
   Distros: openshift-enterprise,openshift-origin
   Topics:
-  - Name: About the Kubernetes NMState Operator
+  - Name: Kubernetes NMState Operator
     File: k8s-nmstate-about-the-k8s-nmstate-operator
   - Name: AWS Load Balancer Operator
     Dir: aws_load_balancer_operator
@@ -1351,20 +1354,14 @@ Topics:
     Topics:
     - Name: AWS Load Balancer Operator release notes
       File: aws-load-balancer-operator-release-notes
-    - Name: Understanding the AWS Load Balancer Operator
+    - Name: AWS Load Balancer Operator in OpenShift Container Platform
       File: understanding-aws-load-balancer-operator
+    - Name: Preparing an AWS STS cluster for the AWS Load Balancer Operator
+      File: preparing-sts-cluster-for-albo
     - Name: Installing the AWS Load Balancer Operator
       File: install-aws-load-balancer-operator
-    - Name: Installing the AWS Load Balancer Operator on a cluster that uses AWS STS
-      File: installing-albo-sts-cluster
-    - Name: Creating an instance of the AWS Load Balancer Controller
-      File: create-instance-aws-load-balancer-controller
-    - Name: Serving multiple ingress resources through a single AWS Load Balancer
-      File: multiple-ingress-through-single-alb
-    - Name: Adding TLS termination on the AWS Load Balancer
-      File: add-tls-termination
-    - Name: Configuring cluster-wide proxy on the AWS Load Balancer Operator
-      File: configure-egress-proxy-aws-load-balancer-operator
+    - Name: Configuring the AWS Load Balancer Operator
+      File: configuring-aws-load-balancer-operator
   - Name: eBPF manager Operator
     Dir: ebpf_manager
     Topics:
@@ -1385,13 +1382,13 @@ Topics:
       File: nw-installing-external-dns-operator-on-cloud-providers
     - Name: External DNS Operator configuration parameters
       File: nw-configuration-parameters
-    - Name: Creating DNS records on a public hosted zone for AWS
+    - Name: Creating DNS records on AWS
       File: nw-creating-dns-records-on-aws
-    - Name: Creating DNS records on a public zone for Azure
+    - Name: Creating DNS records on Azure
       File: nw-creating-dns-records-on-azure
-    - Name: Creating DNS records on a public managed zone for GCP
+    - Name: Creating DNS records on GCP
       File: nw-creating-dns-records-on-gcp
-    - Name: Creating DNS records on a public DNS zone for Infoblox
+    - Name: Creating DNS records on Infoblox
       File: nw-creating-dns-records-on-infoblox
     - Name: Configuring the cluster-wide proxy on the External DNS Operator
       File: nw-configuring-cluster-wide-egress-proxy
@@ -1405,28 +1402,28 @@ Topics:
       File: metallb-operator-install
     - Name: Upgrading the MetalLB Operator
       File: metallb-upgrading-operator
-  - Name: Understanding the Cluster Network Operator
+  - Name: Cluster Network Operator in OpenShift Container Platform
     File: cluster-network-operator
     Distros: openshift-enterprise,openshift-origin
-  - Name: Understanding the DNS Operator
+  - Name: DNS Operator in OpenShift Container Platform
     File: dns-operator
     Distros: openshift-enterprise,openshift-origin
-  - Name: Understanding the Ingress Operator
+  - Name: Ingress Operator in OpenShift Container Platform
     File: ingress-operator
     Distros: openshift-enterprise,openshift-origin
-  - Name: Understanding the Ingress Node Firewall Operator
+  - Name: Ingress Node Firewall Operator in OpenShift Container Platform
     File: ingress-node-firewall-operator
     Distros: openshift-enterprise,openshift-origin
-#   - Name: SR-IOV Operator
-#     Dir: sr-iov-operator
-#     Distros: openshift-enterprise,openshift-origin
-#     Topics:
-#     - Name: Installing the SR-IOV Operator
-#       File: installing-sriov-operator
-#     - Name: Configuring the SR-IOV Operator
-#       File: configuring-sriov-operator
-#     - Name: Uninstalling the SR-IOV Operator
-#       File: uninstalling-sriov-operator
+  - Name: SR-IOV Operator
+    Dir: sr-iov-operator
+    Distros: openshift-enterprise,openshift-origin
+    Topics:
+    - Name: Installing the SR-IOV Operator
+      File: installing-sriov-operator
+    - Name: Configuring the SR-IOV Operator
+      File: configuring-sriov-operator
+    - Name: Uninstalling the SR-IOV Operator
+      File: uninstalling-sriov-operator
 - Name: Network security
   Dir: network_security
   Distros: openshift-enterprise,openshift-origin
@@ -1498,23 +1495,23 @@ Topics:
   File: configuring-ipfailover
 - Name: Configuring system controls and interface attributes using the tuning plugin
   File: configure-syscontrols-interface-tuning-cni
-- Name: Using SCTP
+- Name: Using Stream Control Transmission Protocol
   File: using-sctp
   Distros: openshift-enterprise,openshift-origin
-- Name: Using PTP hardware
+- Name: Using Precision Time Protocol hardware
   Dir: ptp
   Topics:
-  - Name: About PTP in OpenShift clusters
+  - Name: About Precision Time Protocol in OpenShift cluster nodes
     File: about-ptp
-  - Name: Configuring PTP hardware
+  - Name: Configuring Precision Time Protocol devices
     File: configuring-ptp
   - Name: Developing PTP events consumer applications with the REST API v2
     File: ptp-cloud-events-consumer-dev-reference-v2
-  - Name: PTP events REST API v2 reference
+  - Name: Precision Time Protocol events REST API v2 reference
     File: ptp-events-rest-api-reference-v2
   - Name: Developing PTP events consumer applications with the REST API v1
     File: ptp-cloud-events-consumer-dev-reference
-  - Name: PTP events REST API v1 reference
+  - Name: Precision Time Protocol events REST API v1 reference
     File: ptp-events-rest-api-reference
 - Name: CIDR range definitions
   File: cidr-range-definitions
@@ -1524,22 +1521,38 @@ Topics:
   Topics:
   - Name: Understanding multiple networks
     File: understanding-multiple-networks
-  - Name: Understanding user defined networks
-    File: understanding-user-defined-network
-  - Name: Configuring an additional network
-    File: configuring-additional-network
+  - Name: Primary networks
+    Dir: primary_networks
+    Distros: openshift-enterprise, openshift-origin
+    Topics:
+    - Name: UserDefinedNetwork CR
+      File: about-user-defined-networks
+    - Name: NetworkAttachmentDefinition CR
+      File: about-primary-nwt-nad
+  - Name: Secondary networks
+    Dir: secondary_networks
+    Distros: openshift-enterprise, openshift-origin
+    Topics:
+    - Name: Creating secondary networks on OVN-Kubernetes
+      File: creating-secondary-nwt-ovnk
+    - Name: Creating secondary networks with other CNI plugins
+      File: creating-secondary-nwt-other-cni
+    - Name: Attaching a pod to an additional network
+      File: attaching-pod
+    - Name: Configuring multi-network policies
+      File: configuring-multi-network-policy
+    - Name: Removing a pod from an additional network
+      File: removing-pod
+    - Name: Editing an additional network
+      File: editing-additional-network
+    - Name: Configuring IP address assignment for secondary networks
+      File: configuring-ip-secondary-nwt
+    - Name: Configuring the master interface in the container network namespace
+      File: configuring-master-interface
+    - Name: Removing an additional network
+      File: removing-additional-network
   - Name: About virtual routing and forwarding
     File: about-virtual-routing-and-forwarding
-  - Name: Configuring multi-network policy
-    File: configuring-multi-network-policy
-  - Name: Attaching a pod to an additional network
-    File: attaching-pod
-  - Name: Removing a pod from an additional network
-    File: removing-pod
-  - Name: Editing an additional network
-    File: edit-additional-network
-  - Name: Removing an additional network
-    File: remove-additional-network
   - Name: Assigning a secondary network to a VRF
     File: assigning-a-secondary-network-to-a-vrf
 - Name: Hardware networks
@@ -1548,16 +1561,14 @@ Topics:
   Topics:
   - Name: About Single Root I/O Virtualization (SR-IOV) hardware networks
     File: about-sriov
-  - Name: Installing the SR-IOV Operator
-    File: installing-sriov-operator
-  - Name: Configuring the SR-IOV Operator
-    File: configuring-sriov-operator
   - Name: Configuring an SR-IOV network device
     File: configuring-sriov-device
   - Name: Configuring an SR-IOV Ethernet network attachment
     File: configuring-sriov-net-attach
   - Name: Configuring an SR-IOV InfiniBand network attachment
     File: configuring-sriov-ib-attach
+  - Name: Configuring an RDMA subsystem for SR-IOV
+    File: configuring-sriov-rdma-cni
   - Name: Adding a pod to an SR-IOV network
     File: add-pod
   - Name: Configuring interface-level network sysctl settings and all-multicast mode for SR-IOV networks
@@ -1574,8 +1585,6 @@ Topics:
     File: configuring-hardware-offloading
   - Name: Switching Bluefield-2 from NIC to DPU mode
     File: switching-bf2-nic-dpu
-  - Name: Uninstalling the SR-IOV Operator
-    File: uninstalling-sriov-operator
 - Name: OVN-Kubernetes network plugin
   Dir: ovn_kubernetes_network_provider
   Topics:
@@ -1646,6 +1655,9 @@ Topics:
     Distros: openshift-enterprise,openshift-origin
   - Name: Configuring ingress cluster traffic using load balancer allowed source ranges
     File: configuring-ingress-cluster-traffic-load-balancer-allowed-source-ranges
+    Distros: openshift-enterprise,openshift-origin
+  - Name: Patching existing ingress objects
+    File: configuring-ingress-cluster-patch-fields
     Distros: openshift-enterprise,openshift-origin
   # Kubernetes NMState (TECHNOLOGY PREVIEW)
 - Name: Kubernetes NMState
@@ -1746,8 +1758,6 @@ Topics:
     File: persistent-storage-csi
   - Name: CSI inline ephemeral volumes
     File: ephemeral-storage-csi-inline
-  - Name: Shared Resource CSI Driver Operator
-    File: ephemeral-storage-shared-resource-csi-driver-operator
   - Name: CSI volume snapshots
     File: persistent-storage-csi-snapshots
   - Name: CSI volume cloning
@@ -2087,8 +2097,10 @@ Topics:
   Topics:
   - Name: Managing extensions
     File: managing-ce
-  - Name: Upgrade edges
-    File: upgrade-edges
+  - Name: User access to extension resources
+    File: user-access-resources
+  - Name: Update paths
+    File: update-paths
   - Name: CRD upgrade safety
     File: crd-upgrade-safety
 ---
@@ -2211,10 +2223,6 @@ Topics:
 - Name: Image configuration resources
   File: image-configuration
   Distros: openshift-enterprise,openshift-origin
-- Name: Using templates
-  File: using-templates
-- Name: Using Ruby on Rails
-  File: templates-using-ruby-on-rails
 - Name: Using images
   Dir: using_images
   Distros: openshift-enterprise,openshift-origin
@@ -2246,12 +2254,16 @@ Topics:
 - Name: Creating applications
   Dir: creating_applications
   Topics:
+  - Name: Using templates
+    File: using-templates
   - Name: Creating applications using the Developer perspective
     File: odc-creating-applications-using-developer-perspective
   - Name: Creating applications from installed Operators
     File: creating-apps-from-installed-operators
   - Name: Creating applications by using the CLI
     File: creating-applications-using-cli
+  - Name: Creating applications using Ruby on Rails
+    File: templates-using-ruby-on-rails
 - Name: Viewing application composition by using the Topology view
   File: odc-viewing-application-composition-using-topology-view
 - Name: Exporting applications
@@ -2478,7 +2490,7 @@ Topics:
   Topics:
   - Name: Requirements for hosted control planes
     File: hcp-requirements
-  - Name: Hosted control planes sizing guidance
+  - Name: Sizing guidance for hosted control planes
     File: hcp-sizing-guidance
   - Name: Overriding resouce utilization measurements
     File: hcp-override-resource-util
@@ -2497,7 +2509,7 @@ Topics:
     File: hcp-deploy-bm
   - Name: Deploying hosted control planes on OpenShift Virtualization
     File: hcp-deploy-virt
-  - Name: Deploying hosted control planes on non-bare metal agent machines
+  - Name: Deploying hosted control planes on non-bare-metal agent machines
     File: hcp-deploy-non-bm
   - Name: Deploying hosted control planes on IBM Z
     File: hcp-deploy-ibmz
@@ -2512,7 +2524,7 @@ Topics:
     File: hcp-manage-bm
   - Name: Managing hosted control planes on OpenShift Virtualization
     File: hcp-manage-virt
-  - Name: Managing hosted control planes on non-bare metal agent machines
+  - Name: Managing hosted control planes on non-bare-metal agent machines
     File: hcp-manage-non-bm
   - Name: Managing hosted control planes on IBM Power
     File: hcp-manage-ibm-power
@@ -2571,7 +2583,7 @@ Topics:
     File: hcp-destroy-ibmz
   - Name: Destroying a hosted cluster on IBM Power
     File: hcp-destroy-ibm-power
-  - Name: Destroying a hosted cluster on non-bare metal agent machines
+  - Name: Destroying a hosted cluster on non-bare-metal agent machines
     File: hcp-destroy-non-bm
 - Name: Manually importing a hosted cluster
   File: hcp-import
@@ -3077,6 +3089,8 @@ Topics:
       File: distr-tracing-tempo-installing
     - Name: Configuring
       File: distr-tracing-tempo-configuring
+    - Name: Troubleshooting
+      File: distr-tracing-tempo-troubleshooting
     - Name: Upgrading
       File: distr-tracing-tempo-updating
     - Name: Removing
@@ -3103,6 +3117,8 @@ Topics:
   - Name: Configuring the Collector
     Dir: otel-collector
     Topics:
+    - Name: Collector options
+      File: otel-collector-configuration-intro
     - Name: Receivers
       File: otel-collector-receivers
     - Name: Processors
@@ -3269,6 +3285,22 @@ Topics:
       File: telco-core-ref-crs
     - Name: Telco core software specifications
       File: telco-core-ref-software-artifacts
+- Name: Comparing cluster configurations
+  Dir: cluster-compare
+  Distros: openshift-origin,openshift-enterprise
+  Topics:
+  - Name: Understanding the cluster-compare plugin
+    File: understanding-the-cluster-compare-plugin
+  - Name: Installing the cluster-compare plugin
+    File: installing-cluster-compare-plugin
+  - Name: Using the cluster-compare plugin
+    File: using-the-cluster-compare-plugin
+  - Name: Creating a reference configuration
+    File: creating-a-reference-configuration
+  - Name: Performing advanced reference configuration customization
+    File: advanced-ref-config-customization
+  - Name: Troubleshooting cluster comparisons
+    File: troubleshooting-cluster-comparisons
 - Name: Planning your environment according to object maximums
   File: planning-your-environment-according-to-object-maximums
   Distros: openshift-origin,openshift-enterprise
@@ -3304,20 +3336,16 @@ Topics:
 - Name: What huge pages do and how they are consumed by apps
   File: what-huge-pages-do-and-how-they-are-consumed-by-apps
   Distros: openshift-origin,openshift-enterprise
-- Name: Low latency tuning
-  Dir: low_latency_tuning
-  Distros: openshift-origin,openshift-enterprise
-  Topics:
-  - Name: Understanding low latency
-    File: cnf-understanding-low-latency
-  - Name: Tuning nodes for low latency with the performance profile
-    File: cnf-tuning-low-latency-nodes-with-perf-profile
-  - Name: Provisioning real-time and low latency workloads
-    File: cnf-provisioning-low-latency-workloads
-  - Name: Debugging low latency tuning
-    File: cnf-debugging-low-latency-tuning-status
-  - Name: Performing latency tests for platform verification
-    File: cnf-performing-platform-verification-latency-tests
+- Name: Understanding low latency
+  File: cnf-understanding-low-latency
+- Name: Tuning nodes for low latency with the performance profile
+  File: cnf-tuning-low-latency-nodes-with-perf-profile
+- Name: Provisioning real-time and low latency workloads
+  File: cnf-provisioning-low-latency-workloads
+- Name: Debugging low latency tuning
+  File: cnf-debugging-low-latency-tuning-status
+- Name: Performing latency tests for platform verification
+  File: cnf-performing-platform-verification-latency-tests
 - Name: Improving cluster stability in high latency environments using worker latency profiles
   File: scaling-worker-latency-profiles
   Distros: openshift-origin,openshift-enterprise
@@ -3348,7 +3376,7 @@ Topics:
   File: ztp-vdu-validating-cluster-tuning
 - Name: Advanced managed cluster configuration with SiteConfig resources
   File: ztp-advanced-install-ztp
-- Name: Managing cluster polices with PolicyGenerator resources
+- Name: Managing cluster policies with PolicyGenerator resources
   Dir: policygenerator_for_ztp
   Distros: openshift-origin,openshift-enterprise
   Topics:
@@ -3358,7 +3386,7 @@ Topics:
     File: ztp-advanced-policygenerator-config
   - Name: Updating managed clusters in a disconnected environment with PolicyGenerator resources and TALM
     File: ztp-talm-updating-managed-policies-pg
-- Name: Managing cluster polices with PolicyGenTemplate resources
+- Name: Managing cluster policies with PolicyGenTemplate resources
   Dir: policygentemplate_for_ztp
   Distros: openshift-origin,openshift-enterprise
   Topics:
@@ -3443,6 +3471,37 @@ Topics:
       File: telco-update-completing-the-y-stream-update
     - Name: Completing the z-stream update
       File: telco-update-completing-the-z-stream-update
+  - Name: Troubleshooting and maintaining telco core CNF clusters
+    Dir: troubleshooting
+    Topics:
+    - Name: Troubleshooting and maintaining telco core CNF clusters
+      File: telco-troubleshooting-intro
+    - Name: General troubleshooting
+      File: telco-troubleshooting-general-troubleshooting
+    - Name: Cluster maintenance
+      File: telco-troubleshooting-cluster-maintenance
+    - Name: Security
+      File: telco-troubleshooting-security
+    - Name: Certificate maintenance
+      File: telco-troubleshooting-cert-maintenance
+    - Name: Machine Config Operator
+      File: telco-troubleshooting-mco
+    - Name: Bare-metal node maintenance
+      File: telco-troubleshooting-bmn-maintenance
+  - Name: Observability
+    Dir: observability
+    Topics:
+    - Name: Observability in OpenShift Container Platform
+      File: telco-observability
+  - Name: Security
+    Dir: security
+    Topics:
+    - Name: Security basics
+      File: telco-security-basics
+    - Name: Host security
+      File: telco-security-host-sec
+    - Name: Security context constraints
+      File: telco-security-sec-context-constraints
 ---
 Name: Specialized hardware and driver enablement
 Dir: hardware_enablement
@@ -3463,6 +3522,8 @@ Distros: openshift-origin,openshift-enterprise
 Topics:
 - Name: About hardware accelerators
   File: about-hardware-accelerators
+- Name: NVIDIA GPU architecture
+  File: nvidia-gpu-architecture
 ---
 Name: Backup and restore
 Dir: backup_and_restore
@@ -3474,6 +3535,8 @@ Topics:
   File: graceful-cluster-shutdown
 - Name: Restarting a cluster gracefully
   File: graceful-cluster-restart
+- Name: Hibernating a cluster
+  File: hibernating-cluster
 - Name: OADP Application backup and restore
   Dir: application_backup_and_restore
   Topics:
@@ -3498,6 +3561,10 @@ Topics:
       File: oadp-usecase-backup-using-odf
     - Name: Restoring a backup to a different namespace
       File: oadp-usecase-restore-different-namespace
+    - Name: Including a self-signed CA certificate during backup
+      File: oadp-usecase-enable-ca-cert
+    - Name: Using the legacy-aws Velero plugin
+      File: oadp-usecase-legacy-aws-plugin
   - Name: Installing and configuring OADP
     Dir: installing
     Topics:
@@ -3544,7 +3611,7 @@ Topics:
     - Name: Scheduling backups using Schedule CR
       File: oadp-scheduling-backups-doc
     - Name: Deleting backups
-      File: oadp-deleting-backups-doc
+      File: oadp-deleting-backups
     - Name: About Kopia
       File: oadp-about-kopia
   - Name: OADP restoring
@@ -3562,6 +3629,11 @@ Topics:
     Topics:
     - Name: Backing up applications on AWS STS using OADP
       File: oadp-aws-sts
+  - Name: OADP and 3scale
+    Dir: oadp-3scale
+    Topics:
+    - Name: Backing up and restoring 3scale by using OADP
+      File: backing-up-and-restoring-3scale-by-using-oadp
   - Name: OADP Data Mover
     Dir: installing
     Topics:
@@ -3618,7 +3690,7 @@ Topics:
   File: about-mtc-3-4
 - Name: Installing MTC
   File: installing-3-4
-- Name: Installing MTC in a restricted network environment
+- Name: Installing MTC in a disconnected environment
   File: installing-restricted-3-4
 - Name: Upgrading MTC
   File: upgrading-3-4
@@ -3650,7 +3722,7 @@ Topics:
     File: mtc-release-notes-1-5
 - Name: Installing MTC
   File: installing-mtc
-- Name: Installing MTC in a restricted network environment
+- Name: Installing MTC in a disconnected environment
   File: installing-mtc-restricted
 - Name: Upgrading MTC
   File: upgrading-mtc
@@ -4468,6 +4540,8 @@ Topics:
     File: virt-post-install-storage-config
   - Name: Configuring higher VM workload density
     File: virt-configuring-higher-vm-workload-density
+  - Name: Configuring certificate rotation
+    File: virt-configuring-certificate-rotation
 - Name: Updating
   Dir: updating
   Topics:
@@ -4477,41 +4551,49 @@ Topics:
   - Name: Updating OKD Virtualization
     File: upgrading-virt
     Distros: openshift-origin
-- Name: Virtual machines
-  Dir: virtual_machines
+- Name: Creating a virtual machine
+  Dir: creating_vm
   Topics:
-  - Name: Creating VMs from Red Hat images
-    Dir: creating_vms_rh
-    Topics:
-    - Name: Creating VMs from Red Hat images overview
-      File: virt-creating-vms-from-rh-images-overview
-    - Name: Creating VMs from instance types
-      File: virt-creating-vms-from-instance-types
-    - Name: Creating VMs from templates
-      File: virt-creating-vms-from-templates
-    - Name: Creating VMs from the CLI
-      File: virt-creating-vms-from-cli
-  - Name: Creating VMs from custom images
-    Dir: creating_vms_custom
-    Topics:
-    - Name: Creating VMs from custom images overview
-      File: virt-creating-vms-from-custom-images-overview
-    - Name: Creating VMs by using container disks
-      File: virt-creating-vms-from-container-disks
-    - Name: Creating VMs by importing images from web pages
-      File: virt-creating-vms-from-web-images
-    - Name: Creating VMs by uploading images
-      File: virt-creating-vms-uploading-images
-    - Name: Installing the QEMU guest agent and VirtIO drivers
-      File: virt-installing-qemu-guest-agent
-    - Name: Cloning VMs
-      File: virt-cloning-vms
-    - Name: Creating VMs by cloning PVCs
-      File: virt-creating-vms-by-cloning-pvcs
+ # - Name: Overview
+ #   File: virt-basic-vm-overview
+ # - Name: Setting up your environment
+ #   File: virt-setting-up-environment
+  - Name: Creating VMs from instance types
+    File: virt-creating-vms-from-instance-types
+  - Name: Creating VMs from templates
+    File: virt-creating-vms-from-templates
+- Name: Advanced VM creation
+  Dir: creating_vms_advanced
+  Topics:
+    - Name: Advanced virtual machine creation overview
+      File: advanced-vm-creation-overview
+    - Name: Creating VMs in the web console
+      Dir: creating_vms_advanced_web
+      Topics:
+        - Name: Creating VMs from Red Hat images
+          File: virt-creating-vms-from-rh-images-overview
+        - Name: Creating VMs by importing images from web pages
+          File: virt-creating-vms-from-web-images
+        - Name: Creating VMs by uploading images
+          File: virt-creating-vms-uploading-images
+        - Name: Cloning VMs
+          File: virt-cloning-vms
+    - Name: Creating VMs using the CLI
+      Dir: creating_vms_cli
+      Topics:
+        - Name: Creating virtual machines from the command line
+          File: virt-creating-vms-from-cli
+        - Name: Creating VMs by using container disks
+          File: virt-creating-vms-from-container-disks
+        - Name: Creating VMs by cloning PVCs
+          File: virt-creating-vms-by-cloning-pvcs
+- Name: Managing VMs
+  Dir: managing_vms
+  Topics:
+  - Name: Installing the QEMU guest agent and VirtIO drivers
+    File: virt-installing-qemu-guest-agent
   - Name: Connecting to VM consoles
     File: virt-accessing-vm-consoles
-  - Name: Specifying an instance type or preference
-    File: virt-specifying-instance-preference
   - Name: Configuring SSH access to VMs
     File: virt-accessing-vm-ssh
   - Name: Editing virtual machines
@@ -4533,17 +4615,10 @@ Topics:
   - Name: Advanced virtual machine management
     Dir: advanced_vm_management
     Topics:
-#Advanced virtual machine configuration
     - Name: Working with resource quotas for virtual machines
       File: virt-working-with-resource-quotas-for-vms
-    - Name: Configuring the Application-Aware Quota Operator
-      File: virt-understanding-aaq-operator
     - Name: Specifying nodes for virtual machines
       File: virt-specifying-nodes-for-vms
-    - Name: Activating kernel samepage merging (KSM)
-      File: virt-activating-ksm
-    - Name: Configuring certificate rotation
-      File: virt-configuring-certificate-rotation
     - Name: Configuring the default CPU model
       File: virt-configuring-default-cpu-model
     - Name: UEFI mode for virtual machines
@@ -4560,8 +4635,6 @@ Topics:
       File: virt-configuring-pci-passthrough
     - Name: Configuring virtual GPUs
       File: virt-configuring-virtual-gpus
-    - Name: Configuring USB host passthrough
-      File: virt-configuring-usb-host-passthrough
     - Name: Enabling descheduler evictions on virtual machines
       File: virt-enabling-descheduler-evictions
     - Name: About high availability for virtual machines
@@ -4570,8 +4643,6 @@ Topics:
       File: virt-vm-control-plane-tuning
     - Name: Assigning compute resources
       File: virt-assigning-compute-resources
-#    - Name: Running real-time workloads
-#      File: virt-configuring-cluster-realtime-workloads
     - Name: About multi-queue functionality
       File: virt-about-multi-queue
   - Name: VM disks
@@ -4590,6 +4661,8 @@ Topics:
     File: virt-networking-overview
   - Name: Connecting a VM to the default pod network
     File: virt-connecting-vm-to-default-pod-network
+  - Name: Connecting a VM to a primary user-defined network
+    File: virt-connecting-vm-to-primary-udn
   - Name: Exposing a VM by using a service
     File: virt-exposing-vm-with-service
   - Name: Accessing a VM by using its internal FQDN
@@ -4637,6 +4710,8 @@ Topics:
     File: virt-using-preallocation-for-datavolumes
   - Name: Managing data volume annotations
     File: virt-managing-data-volume-annotations
+  - Name: Understanding virtual machine storage with the CSI paradigm
+    File: virt-storage-with-csi-paradigm
 # Virtual machine live migration
 - Name: Live migration
   Dir: live_migration
@@ -4659,6 +4734,8 @@ Topics:
     File: virt-preventing-node-reconciliation
   - Name: Deleting a failed node to trigger VM failover
     File: virt-triggering-vm-failover-resolving-failed-node
+  - Name: Activating kernel samepage merging (KSM)
+    File: virt-activating-ksm
 - Name: Monitoring
   Dir: monitoring
   Topics:

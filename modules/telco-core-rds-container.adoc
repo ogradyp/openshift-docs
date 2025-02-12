@@ -24,12 +24,12 @@ $ mkdir -p ./out
 +
 [source,terminal]
 ----
-$ podman run -it registry.redhat.io/openshift4/openshift-telco-core-rds-rhel9:v4.17 | base64 -d | tar xv -C out
+$ podman run -it registry.redhat.io/openshift4/openshift-telco-core-rds-rhel9:v4.18 | base64 -d | tar xv -C out
 ----
 
 .Verification
 
-* The `out` directory has the following folder structure. You can view the telco core CRs in the `out/telco-core-rds/` directory.
+* The `out` directory has the following directory structure. You can view the telco core CRs in the `out/telco-core-rds/` directory.
 +
 .Example output
 [source,text]
